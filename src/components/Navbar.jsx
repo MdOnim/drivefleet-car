@@ -12,14 +12,14 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Explore Cars", href: "/explore" },
+    { name: "Explore Cars", href: "/explore-car" },
     { name: "Add Car", href: "/add-car" },
     { name: "My Bookings", href: "/bookings" },
   ];
 
   return (
     <div className="sticky top-0 z-50">
-      <div className="w-full max-w-7xl mx-auto my-4 px-4 md:px-6 py-3 bg-[#0d1520]/90 backdrop-blur-md border border-gray-800 rounded-2xl relative shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+      <div className="w-full  px-4 md:px-6 py-3 bg-[#0d1520]/90 backdrop-blur-md border-b border-gray-800  relative shadow-[0_0_30px_rgba(0,0,0,0.5)]">
         <div className="flex items-center justify-between">
           
     
