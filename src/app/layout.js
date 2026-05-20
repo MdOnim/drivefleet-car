@@ -27,16 +27,16 @@ export default function RootLayout({ children }) {
       <body className="min-h-full flex flex-col">
         <main>
 
-          <div className="fixed inset-0 bg-gradient-to-br from-[#000814] via-[#001d3d] to-[#00112b] -z-50" />
+          <div className="fixed inset-0 w-full h-full bg-[#0d1520] -z-50" />
 
       
-        <div className="fixed -left-40 top-0 h-[500px] w-[500px] rounded-full bg-blue-600/10 blur-[120px] -z-50 pointer-events-none" />
+        {/* <div className="fixed -left-40 top-0 h-[500px] w-[500px] rounded-full bg-blue-600/10 blur-[120px] -z-50 pointer-events-none" />
 
       
         <div className="fixed -right-20 top-20 h-[500px] w-[500px] rounded-full bg-cyan-400/10 blur-[120px] -z-50 pointer-events-none" />
 
      
-        <div className="fixed left-1/3 top-1/2 h-[400px] w-[400px] rounded-full bg-indigo-500/10 blur-[120px] -z-50 pointer-events-none" />
+        <div className="fixed left-1/3 top-1/2 h-[400px] w-[400px] rounded-full bg-indigo-500/10 blur-[120px] -z-50 pointer-events-none" /> */}
 
         
         <Navbar/>

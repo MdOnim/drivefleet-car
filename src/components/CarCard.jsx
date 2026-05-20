@@ -1,6 +1,7 @@
 "use client";
 
 import { MapPin } from "lucide-react";
+import Link from "next/link";
 
 const CarCard = ({ car }) => {
   const { availabilitystatus, carname, cartype, description, imageurl, pickuplocation, rentprice, seatcapacity, _id } = car;
@@ -48,10 +49,14 @@ const CarCard = ({ car }) => {
           </div>
         </div>
 
-    
-        <button className="w-full mt-6 border border-cyan-500/30 text-cyan-400 py-3 rounded-2xl font-semibold bg-cyan-950/20 hover:bg-cyan-500 hover:text-slate-950 active:scale-98 transition-all duration-150 cursor-pointer">
+       <Link href={`/explore-car/${_id}`} >
+          <button className="w-full mt-6 border border-cyan-500/30 text-cyan-400 py-3  rounded-2xl font-semibold bg-cyan-950/20 hover:bg-cyan-500 hover:text-slate-950 active:scale-98 transition-all duration-150 cursor-pointer">
           View Details
         </button>
+        
+        </Link>
+
+      
       </div>
     </div>
   );

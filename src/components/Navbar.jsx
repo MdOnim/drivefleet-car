@@ -5,8 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true); 
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(true); 
+  // const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
@@ -52,7 +52,7 @@ export default function Navbar() {
 
   
           <div className="flex items-center gap-3">
-            {isLoggedIn ? (
+            {/* {isLoggedIn ? (
               <div className="relative hidden sm:block">
                 <button
                   onClick={() => setIsProfileOpen(!isProfileOpen)}
@@ -101,8 +101,11 @@ export default function Navbar() {
                   </div>
                 )}
               </div>
-            ) : (
-              <div className="hidden sm:flex items-center gap-2">
+            ) : ( */}
+
+
+
+              {(<div className="hidden sm:flex items-center gap-2">
                 <Link href="/login" className="px-3 py-2 text-sm text-gray-400 hover:text-cyan-400">
                   Login
                 </Link>

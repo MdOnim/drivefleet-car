@@ -67,6 +67,7 @@ const AddCarPage = () => {
                 <Car className="absolute left-4 text-gray-500 w-5 h-5 pointer-events-none" />
                 <input
                   type="text"
+                  required
                   name="carname" 
                   placeholder="Enter car name (e.g., Tesla Model S)"
                   className="w-full bg-[#0d1520] border border-gray-800 rounded-xl pl-12 pr-4 py-3 text-white outline-none focus:border-cyan-400 focus:shadow-[0_0_10px_rgba(34,211,238,0.2)] transition duration-300 placeholder:text-gray-600"
@@ -83,6 +84,7 @@ const AddCarPage = () => {
                 <DollarSign className="absolute left-4 text-gray-500 w-5 h-5 pointer-events-none" />
                 <input
                   type="number"
+                  required
                   name="rentprice" 
                   placeholder="Enter daily rent price in USD"
                   className="w-full bg-[#0d1520] border border-gray-800 rounded-xl pl-12 pr-4 py-3 text-white outline-none focus:border-cyan-400 focus:shadow-[0_0_10px_rgba(34,211,238,0.2)] transition duration-300 placeholder:text-gray-600"
@@ -123,6 +125,7 @@ const AddCarPage = () => {
                 <ImageIcon className="absolute left-4 text-gray-500 w-5 h-5 pointer-events-none" />
                 <input
                   type="text"
+                  required
                   name="imageurl" 
                   placeholder="https://example.com/car-image.jpg"
                   className="w-full bg-[#0d1520] border border-gray-800 rounded-xl pl-12 pr-4 py-3 text-white outline-none focus:border-cyan-400 focus:shadow-[0_0_10px_rgba(34,211,238,0.2)] transition duration-300 placeholder:text-gray-600"
@@ -142,6 +145,7 @@ const AddCarPage = () => {
                 <Users className="absolute left-4 text-gray-500 w-5 h-5 pointer-events-none" />
                 <input
                   type="number"
+                  required
                   name="seatcapacity"
                   placeholder="Enter seat capacity (e.g., 4 or 7)"
                   className="w-full bg-[#0d1520] border border-gray-800 rounded-xl pl-12 pr-4 py-3 text-white outline-none focus:border-cyan-400 focus:shadow-[0_0_10px_rgba(34,211,238,0.2)] transition duration-300 placeholder:text-gray-600"
@@ -158,6 +162,7 @@ const AddCarPage = () => {
                 <MapPin className="absolute left-4 text-gray-500 w-5 h-5 pointer-events-none" />
                 <input
                   type="text"
+                  required
                   name="pickuplocation" 
                   placeholder="Enter pickup city or location"
                   className="w-full bg-[#0d1520] border border-gray-800 rounded-xl pl-12 pr-4 py-3 text-white outline-none focus:border-cyan-400 focus:shadow-[0_0_10px_rgba(34,211,238,0.2)] transition duration-300 placeholder:text-gray-600"
@@ -178,6 +183,7 @@ const AddCarPage = () => {
                 <textarea
                   rows="4"
                   name="description" 
+                  required
                   placeholder="Write a short description about features, condition, etc."
                   className="w-full bg-[#0d1520] border border-gray-800 rounded-xl pl-12 pr-4 py-3 text-white outline-none focus:border-cyan-400 focus:shadow-[0_0_10px_rgba(34,211,238,0.2)] transition duration-300 resize-none placeholder:text-gray-600"
                 ></textarea>
@@ -193,6 +199,7 @@ const AddCarPage = () => {
                 <CheckCircle2 className="absolute left-4 text-gray-500 w-5 h-5 pointer-events-none" />
                 <select 
                   name="availabilitystatus" 
+                  required
                   className="w-full bg-[#0d1520] border border-gray-800 rounded-xl pl-12 pr-10 py-3 text-white outline-none focus:border-cyan-400 focus:shadow-[0_0_10px_rgba(34,211,238,0.2)] transition duration-300 appearance-none cursor-pointer"
                 >
                   <option className="bg-[#0b1119]" value="">Select status</option>
