@@ -13,6 +13,8 @@ import {
 import { Eye, EyeOff } from "lucide-react";
 import { authClient } from "../lib/auth-client";
 import { redirect } from "next/navigation";
+import Link from "next/link";
+import { FcGoogle } from "react-icons/fc";
 
 const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -38,6 +40,18 @@ const SignUpPage = () => {
       alert(error.message);
     }
   };
+
+
+
+//   gogole singup 
+
+const handleGoogleSingUp = async ()=>{
+        await authClient.signIn.social({
+            provider: 'google'
+        })
+
+    }
+
 
   return (
     <div className="min-h-screen bg-[#0d1520] flex items-center justify-center px-4 py-10">
@@ -179,23 +193,20 @@ const SignUpPage = () => {
               </div>
 
               <Button
+                onClick={handleGoogleSingUp}
                 variant="bordered"
                 className="w-full h-12 border-gray-800 text-zinc-300 bg-[#0d1520]/40 rounded-xl hover:border-cyan-500/30 hover:text-cyan-400 transition-all duration-300 font-medium"
               >
-                <img
-                  src="https://cdn-icons-png.flaticon.com/512/281/281764.png"
-                  alt="google"
-                  className="w-5 h-5 mr-1"
-                />
+             <FcGoogle size={24} />
                 Continue with Google
               </Button>
             </Form>
 
-            <p className="text-center text-zinc-400 mt-6 text-sm">
-              Already have an account?{" "}
-              <span className="text-cyan-400 font-medium hover:underline cursor-pointer transition-colors">
+           <p className="text-center text-zinc-400 mt-6 text-sm">
+            Already have an account?{" "}
+            <Link href="/login" className="text-cyan-400 font-medium hover:underline cursor-pointer transition-colors">
                 Login
-              </span>
+            </Link>
             </p>
           </div>
         </div>

@@ -3,10 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { authClient } from "@/app/lib/auth-client";
+import { Avatar } from "@heroui/react";
 
 export default function Navbar() {
   // const [isLoggedIn, setIsLoggedIn] = useState(true); 
-  // const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
@@ -16,6 +18,25 @@ export default function Navbar() {
     { name: "Add Car", href: "/add-car" },
     { name: "My Bookings", href: "/bookings" },
   ];
+
+
+
+  const { 
+        data: session, 
+        isPending, //loading state
+        error, //error object
+        refetch //refetch the session
+    } = authClient.useSession()
+
+    const user = session?.user
+  
+    const handleLogout = async () => {
+    await authClient.signOut();
+     setIsProfileOpen(false);      
+     setIsMobileMenuOpen(false);  
+    };
+
+
 
   return (
     <div className="sticky top-0 z-50">
@@ -52,17 +73,20 @@ export default function Navbar() {
 
   
           <div className="flex items-center gap-3">
-            {/* {isLoggedIn ? (
+            {user ? (
               <div className="relative hidden sm:block">
                 <button
                   onClick={() => setIsProfileOpen(!isProfileOpen)}
                   className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-950 to-slate-900 border border-cyan-500/30 text-cyan-400 hover:border-cyan-400 transition-all"
                 >
-                  <div className="w-6 h-6 rounded-full bg-cyan-500 flex items-center justify-center text-slate-950 font-bold text-xs">
-                    M
-                  </div>
-                  <span className="text-sm font-medium">Profile</span>
-                  <span className="text-xs">▼</span>
+                  <div className="w-7 h-7 rounded-full bg-cyan-500 flex items-center justify-center text-slate-950 font-bold text-xs overflow-hidden">
+                <Avatar className="w-full h-full object-cover">
+                  <Avatar.Image alt="John Doe" src={user?.image} />
+                  <Avatar.Fallback>{user?.name?.charAt(0).toUpperCase()}</Avatar.Fallback>
+                </Avatar>
+                </div>
+                <span className="text-sm font-medium">Profile</span>
+                <span className="text-xs">▼</span>
                 </button>
 
                 {isProfileOpen && (
@@ -81,19 +105,9 @@ export default function Navbar() {
                     >
                       My Bookings
                     </Link>
-                    <Link
-                      href="/my-added-cars"
-                      className="block px-4 py-2.5 text-sm text-gray-300 hover:bg-cyan-950/40 hover:text-cyan-400"
-                      onClick={() => setIsProfileOpen(false)}
-                    >
-                      My Added Cars
-                    </Link>
                     <hr className="border-gray-800 my-1" />
                     <button
-                      onClick={() => {
-                        setIsLoggedIn(false);
-                        setIsProfileOpen(false);
-                      }}
+                      onClick={handleLogout}
                       className="w-full text-left px-4 py-2.5 text-sm text-red-400 hover:bg-red-950/20"
                     >
                       Logout
@@ -101,11 +115,7 @@ export default function Navbar() {
                   </div>
                 )}
               </div>
-            ) : ( */}
-
-
-
-              {(<div className="hidden sm:flex items-center gap-2">
+            ) : (<div className="hidden sm:flex items-center gap-2">
                 <Link href="/login" className="px-3 py-2 text-sm text-gray-400 hover:text-cyan-400">
                   Login
                 </Link>
@@ -148,28 +158,33 @@ export default function Navbar() {
               );
             })}
             
-            {isLoggedIn ? (
-              <div className="pt-2 border-t border-gray-800">
-                <button
-                  onClick={() => {
-                    setIsLoggedIn(false);
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="w-full text-center py-2.5 text-sm font-medium text-red-400 bg-red-950/10 hover:bg-red-950/20 rounded-xl transition-all"
-                >
-                  Logout
-                </button>
-              </div>
-            ) : (
-              <div className="flex flex-col gap-2 pt-2 border-t border-gray-800">
-                <Link href="/login" onClick={() => setIsMobileMenuOpen(false)} className="w-full text-center py-2 text-sm text-gray-400 bg-gray-900 rounded-xl">
-                  Login
-                </Link>
-                <Link href="/register" onClick={() => setIsMobileMenuOpen(false)} className="w-full text-center py-2 text-sm font-medium text-slate-950 bg-gradient-to-r from-cyan-400 to-teal-400 rounded-xl">
-                  Register
-                </Link>
-              </div>
-            )}
+          
+
+
+
+
+
+{/* mobile  */}
+
+{user ? (
+  <div className="pt-2 border-t border-gray-800 flex flex-col gap-2">
+    <button
+      onClick={handleLogout}
+      className="w-full text-center py-2.5 text-sm font-medium text-red-400 bg-red-950/10 hover:bg-red-950/20 rounded-xl transition-all"
+    >
+      Logout
+    </button>
+  </div>
+) : (
+  <div className="flex flex-col gap-2 pt-2 border-t border-gray-800">
+    <Link href="/login" onClick={() => setIsMobileMenuOpen(false)} className="w-full text-center py-2 text-sm text-gray-400 bg-gray-900 rounded-xl">
+      Login
+    </Link>
+    <Link href="/register" onClick={() => setIsMobileMenuOpen(false)} className="w-full text-center py-2 text-sm font-medium text-slate-950 bg-gradient-to-r from-cyan-400 to-teal-400 rounded-xl">
+      Register
+    </Link>
+  </div>
+)}
           </div>
         )}
       </div>
