@@ -1,6 +1,8 @@
 import React from 'react';
 import { ArrowLeft, Users, Car, MapPin, CheckCircle, Calendar } from 'lucide-react';
 import Link from 'next/link';
+import BookingModal from '@/components/BookingModal';
+
 
 const CarDetailsPage = async ({ params }) => {
     const { id } = await params;
@@ -44,9 +46,10 @@ const CarDetailsPage = async ({ params }) => {
                             className="w-full h-full object-cover"
                         />
                     </div>
-                    <button className="w-full bg-gradient-to-r from-cyan-400 to-teal-400 text-slate-950 font-bold py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:opacity-90 active:scale-[0.99]">
-                        Book Now
-                    </button>
+          
+              <BookingModal cars={cars}  />
+
+
                 </div>
                 <div className="space-y-6 lg:pl-6 bg-[#0b1119] border border-gray-800 p-6 rounded-2xl shadow-2xl">
                     <div className="flex justify-between items-start flex-wrap gap-4">
