@@ -18,7 +18,7 @@ const MyBookingPage = async () => {
   
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="max-w-4xl mx-auto px-4 py-4">
       {bookings && bookings.length > 0 ? (
         <div className="grid grid-cols-1 gap-4">
           {bookings.map((booking) => (

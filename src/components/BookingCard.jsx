@@ -2,12 +2,11 @@ import { Calendar, MapPin } from "lucide-react";
 import React from "react";
 
 const BookingCard = ({ booking }) => {
-  
-  console.log(booking);
-  const { carname, imageurl, pickuplocation, bookingDate } = booking;
+
+  const { carname, imageurl, pickuplocation, bookingDate,rentprice } = booking;
   return (
     <div>
-      <div className="max-w-4xl mx-auto px-4 my-4">
+      <div className="max-w-4xl mx-auto ">
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 p-4 sm:p-5 bg-[#0b1119] rounded-2xl border border-gray-800 shadow-2xl">
        
           <div className="flex items-center gap-4 flex-1 min-w-0">
@@ -38,7 +37,7 @@ const BookingCard = ({ booking }) => {
 
           <div className="flex sm:flex-col items-baseline sm:items-end justify-between sm:justify-center gap-1 sm:gap-0.5 border-t sm:border-t-0 border-gray-800/60 pt-3 sm:pt-0">
             <div className="text-lg sm:text-xl font-black text-cyan-400 tracking-tight">
-              $110
+              ${rentprice}
             </div>
 
             <div className="text-xs text-zinc-500 uppercase tracking-wider font-medium mt-0.5">

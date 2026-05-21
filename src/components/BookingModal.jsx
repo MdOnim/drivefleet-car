@@ -5,6 +5,7 @@ import { Button, Modal } from "@heroui/react";
 import toast from "react-hot-toast";
 
 export default function BookingModal({ cars }) {
+ 
   const { data: session } = authClient.useSession();
   const user = session?.user;
 
@@ -20,6 +21,7 @@ export default function BookingModal({ cars }) {
     cartype,
     seatcapacity,
     pickuplocation,
+
   } = cars;
 
   const onsubmit = async (e) => {
