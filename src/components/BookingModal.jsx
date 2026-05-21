@@ -2,10 +2,14 @@
 
 import { authClient } from "@/app/lib/auth-client";
 import { Button, Modal } from "@heroui/react";
+import toast from "react-hot-toast";
 
 export default function BookingModal({ cars }) {
   const { data: session } = authClient.useSession();
   const user = session?.user;
+
+
+
 
   const {
     carname,
@@ -24,6 +28,11 @@ export default function BookingModal({ cars }) {
     const bookingFormdata = new FormData(e.currentTarget);
     const booking = Object.fromEntries(bookingFormdata.entries());
 
+  const now = new Date();
+  const formattedDate = new Intl.DateTimeFormat('en-US', { day: 'numeric', month: 'short', year: 'numeric' }).format(now);
+  const formattedTime = new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }).format(now);
+  const bookingDateTime = `${formattedDate} • ${formattedTime}`;
+
     const AllbookingData = {
       carname,
       rentprice,
@@ -39,6 +48,7 @@ export default function BookingModal({ cars }) {
       pickuplocation,
       driver: booking.driver,
       note: booking.note,
+      bookingDate: bookingDateTime,
     };
 
     console.log(AllbookingData, "All data from modal");
@@ -52,7 +62,7 @@ export default function BookingModal({ cars }) {
     });
 
     const data = await res.json();
-    console.log(data);
+    toast.success("Booking Successful");
   };
 
   return (

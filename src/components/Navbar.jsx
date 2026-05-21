@@ -16,7 +16,7 @@ export default function Navbar() {
     { name: "Home", href: "/" },
     { name: "Explore Cars", href: "/explore-car" },
     { name: "Add Car", href: "/add-car" },
-    { name: "My Bookings", href: "/bookings" },
+    { name: "My Bookings", href: "/my-bookings" },
   ];
 
 
@@ -99,7 +99,7 @@ export default function Navbar() {
                       Add Car
                     </Link>
                     <Link
-                      href="/bookings"
+                      href="/my-bookings"
                       className="block px-4 py-2.5 text-sm text-gray-300 hover:bg-cyan-950/40 hover:text-cyan-400"
                       onClick={() => setIsProfileOpen(false)}
                     >
