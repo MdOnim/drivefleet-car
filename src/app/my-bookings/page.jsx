@@ -26,7 +26,7 @@ const MyBookingPage = async () => {
           ))}
         </div>
       ) : (
-        /* ডাটা না থাকলে এই কার্ডটি দেখাবে */
+      
         <EmptyBookingCard />
        
       )}

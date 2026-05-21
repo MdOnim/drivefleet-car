@@ -106,11 +106,11 @@ export default function Navbar() {
                       My Bookings
                     </Link>
                     <Link
-                      href="/my-bookings"
+                      href="/my-added-car"
                       className="block px-4 py-2.5 text-sm text-gray-300 hover:bg-cyan-950/40 hover:text-cyan-400"
                       onClick={() => setIsProfileOpen(false)}
                     >
-                      My Bookings
+                      My Added car
                     </Link>
                     <hr className="border-gray-800 my-1" />
                     <button
