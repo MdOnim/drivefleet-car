@@ -2,12 +2,14 @@
 
 import { authClient } from "@/app/lib/auth-client";
 import { Button, Modal } from "@heroui/react";
+import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 export default function BookingModal({ cars }) {
- 
+   const router = useRouter();
   const { data: session } = authClient.useSession();
   const user = session?.user;
+  
 
 
 
@@ -26,6 +28,11 @@ export default function BookingModal({ cars }) {
 
   const onsubmit = async (e) => {
     e.preventDefault();
+    if (!user) {
+      toast.error("Please Login First");
+      router.push("/login");
+      return;
+    }
 
     const bookingFormdata = new FormData(e.currentTarget);
     const booking = Object.fromEntries(bookingFormdata.entries());

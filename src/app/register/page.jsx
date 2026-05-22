@@ -43,7 +43,7 @@ const SignUpPage = () => {
 
 
 
-//   gogole singup 
+
 
 const handleGoogleSingUp = async ()=>{
         await authClient.signIn.social({

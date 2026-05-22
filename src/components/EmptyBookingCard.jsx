@@ -17,7 +17,7 @@ const EmptyBookingCard = () => {
 
       <div className="relative space-y-4">
         <h3 className="text-3xl font-bold text-zinc-200 tracking-wide">
-          No Bookings Found
+          No Data Found
         </h3>
         <p className="text-base text-zinc-500 max-w-2xl leading-relaxed">
           You have not created any bookings yet. Once you book a ride, it will

@@ -11,14 +11,51 @@ import {
   CheckCircle2, 
   ChevronDown 
 } from "lucide-react";
+import { authClient } from "../lib/auth-client";
+import toast from "react-hot-toast";
+
+
+
+
+
+
 
 const AddCarPage = () => {
 
   const onsubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const carFormdata = Object.fromEntries(formData.entries());
+    const rawData = Object.fromEntries(formData.entries());
+
+    const sessionRes = await authClient.getSession();
+    const userData = sessionRes?.data || sessionRes; 
+    const id = userData?.user?.id;
+
     
+
+
+    if (!id) {
+      toast.error("User session not found! Please re-login.");
+      return;
+    }
+
+
+   
+
+      const carFormdata = {
+      carname: rawData.carname, 
+      rentprice: Number(rawData.rentprice) || 0, 
+      cartype: rawData.cartype, 
+      seatcapacity: Number(rawData.seatcapacity) || 0, 
+      imageurl: rawData.imageurl, 
+      userId: id, 
+      pickuplocation: rawData.pickuplocation, 
+      description: rawData.description,
+      availabilitystatus: rawData.availabilitystatus,
+      bookingCount: 0,
+      createdAt: new Date().toISOString()
+    };
+
    const res = await fetch('http://localhost:5000/cars',{
       method: 'POST',
       headers: {
