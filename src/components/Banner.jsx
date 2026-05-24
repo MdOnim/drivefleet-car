@@ -11,13 +11,15 @@ export default function Banner() {
 
   const carSlides = [
     {
-      url: "https://plus.unsplash.com/premium_photo-1737182592549-0c83f93e2903?q=80&w=1632&auto=format&fit=crop",
+      url: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1632&auto=format&fit=crop",
       alt: "Dream Car 1"
     },
+    
     {
-      url: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1632&auto=format&fit=crop",
+      url: "https://plus.unsplash.com/premium_photo-1737182592549-0c83f93e2903?q=80&w=1632&auto=format&fit=crop",
       alt: "Dream Car 2"
     },
+    
     {
       url: "https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=1632&auto=format&fit=crop",
       alt: "Dream Car 3"

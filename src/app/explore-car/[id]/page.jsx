@@ -6,7 +6,7 @@ import BookingModal from '@/components/BookingModal';
 
 const CarDetailsPage = async ({ params }) => {
     const { id } = await params;
-    const res = await fetch(`http://localhost:5000/cars/${id}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/cars/${id}`);
     const cars = await res.json();
     
    

@@ -62,7 +62,7 @@ export default function BookingModal({ cars }) {
 
     console.log(AllbookingData, "All data from modal");
 
-    const res = await fetch(`http://localhost:5000/userBooking/${user.id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/userBooking/${user.id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -140,6 +140,7 @@ export default function BookingModal({ cars }) {
 
                 <Button
                   type="submit"
+                  slot="close"
                   className="w-full bg-gradient-to-r from-cyan-400 to-teal-400 text-slate-950 font-black py-5 rounded-xl text-xs shadow-[0_0_20px_rgba(34,211,238,0.2)] hover:opacity-90 active:scale-[0.99] transition-all mt-2"
                 >
                   Book Now

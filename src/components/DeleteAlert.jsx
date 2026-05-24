@@ -1,22 +1,36 @@
 "use client";
-
+import { authClient } from "@/app/lib/auth-client";
 import { AlertDialog, Button } from "@heroui/react";
 import { Trash2 } from "lucide-react";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export function DeleteAlert({ car }) {
   const { _id } = car;
+  const router = useRouter();
 
   const handleDelete = async () => {
-    const res = await fetch(`http://localhost:5000/cars/${_id}`, {
+
+
+    const {data:tokenData} = await authClient.token()
+
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/cars/${_id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
+        authorization :`Bearer ${tokenData?.token}`
       },
     });
-
     const data = await res.json();
-    redirect('/explore-car')
+
+      if(res.ok){
+      toast.success("Car deleted successfully!");
+      router.refresh();
+    }else {
+      toast.error("Failed to delete car.");
+    }
+    
    
   };
 

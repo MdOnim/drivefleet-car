@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/app/lib/auth-client";
 import { Envelope } from "@gravity-ui/icons";
 import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
 import {
@@ -13,8 +14,11 @@ import {
   MapPin,
   Pencil,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export function EditModal({ car }) {
+  const router = useRouter();
   const {
     carname,
     rentprice,
@@ -31,30 +35,38 @@ export function EditModal({ car }) {
     const formData = new FormData(e.currentTarget);
     const AllFormData = Object.fromEntries(formData.entries());
     console.log(AllFormData);
-
-    const res = await fetch(`http://localhost:5000/cars/${_id}`, {
+    
+    const {data:tokenData} = await authClient.token()
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/cars/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        authorization :`Bearer ${tokenData?.token}`
+        
       },
       body: JSON.stringify(AllFormData),
+      
     });
+
+
+
+    if (res.ok) {
+      toast.success("Updated Successfully");
+       router.refresh();
+      }else {
+    toast.error("Failed to Update");
+  }
 
     const data = await res.json();
     console.log(data, "updated data");
-
-
-
-
   };
 
   return (
     <Modal>
       <Button className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 py-2 text-xs font-bold text-cyan-400 bg-cyan-950/40 border border-cyan-500/20 hover:bg-cyan-950 rounded-xl transition-colors">
-        <Pencil size={14} />
+        <Pencil size={14}/>
         <span>Edit</span>
       </Button>
-
       <Modal.Backdrop>
         <Modal.Container placement="auto">
           <Modal.Dialog className="sm:max-w-2xl bg-[#0b1119] border border-gray-800 text-zinc-100 rounded-2xl overflow-hidden shadow-2xl max-h-[90vh] overflow-y-auto scrollbar-none">
@@ -67,7 +79,6 @@ export function EditModal({ car }) {
                 Update Vehicle Info
               </Modal.Heading>
             </Modal.Header>
-
             <Modal.Body className="p-6 bg-[#0b1119]">
               <Surface
                 variant="default"
@@ -234,6 +245,7 @@ export function EditModal({ car }) {
                     </Button>
                     <Button
                       type="submit"
+                      slot="close"
                       className="bg-gradient-to-r from-cyan-400 to-teal-400 text-slate-950 font-bold text-xs uppercase tracking-wider rounded-xl px-6 py-2.5 shadow-[0_0_15px_rgba(34,211,238,0.2)] hover:opacity-90 transition-all"
                     >
                       Save

@@ -8,9 +8,18 @@ const MyAddCarPage = async () => {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
-  const user = session?.user;
 
-  const res = await fetch(`http://localhost:5000/my-added-cars/${user.id}`);
+  const {token} = await auth.api.getToken({
+    headers: await headers(),
+  })
+
+
+  const user = session?.user;
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-added-cars/${user.id}`,{
+    headers: {
+      'authorization': `Bearer ${token}`
+    }
+  });
   const mybookings = await res.json();
   console.log(mybookings,"data from my booking ");
 
