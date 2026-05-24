@@ -9,6 +9,7 @@ const ExploreCarPage = async ({ searchParams }) => {
   
   const searchQuary = params?.search || "";
   const typeFilter = params?.type || "";
+  
 
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/search?search=${encodeURIComponent(searchQuary)}&type=${encodeURIComponent(typeFilter)}`,

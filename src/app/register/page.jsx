@@ -11,7 +11,7 @@ import {
 } from "@heroui/react";
 
 import { Eye, EyeOff } from "lucide-react";
-import { authClient } from "../lib/auth-client";
+import { authClient } from "../../lib/auth-client";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";

@@ -1,6 +1,6 @@
 import React from "react";
 import AddedCarCard from "@/components/AddedCarCard";
-import { auth } from "../lib/auth";
+import { auth } from "../../lib/auth";
 import { headers } from "next/headers";
 import EmptyBookingCard from "@/components/EmptyBookingCard";
 

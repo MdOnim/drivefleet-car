@@ -11,9 +11,10 @@ import {
   CheckCircle2,
   ChevronDown,
 } from "lucide-react";
-import { authClient } from "../lib/auth-client";
+import { authClient } from "../../lib/auth-client";
 import toast from "react-hot-toast";
-import { redirect } from "next/dist/server/api-utils";
+import { redirect } from "next/navigation";
+
 
 const AddCarPage = () => {
   const onsubmit = async (e) => {
@@ -64,7 +65,6 @@ const AddCarPage = () => {
     e.target.reset();
   } else {
     toast.error("Failed to add car!");
-    
   }
 
     console.log(data);

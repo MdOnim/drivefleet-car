@@ -11,10 +11,11 @@ import {
 } from "@heroui/react";
 
 import { Eye, EyeOff } from "lucide-react";
-import { authClient } from "../lib/auth-client";
+import { authClient } from "../../lib/auth-client";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
+import toast from "react-hot-toast";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -37,8 +38,8 @@ const LoginPage = () => {
     }
 
     if (error) {
-      alert(error.message);
-    }
+    toast.error(error.message);
+}
   };
 
 
@@ -50,16 +51,7 @@ const LoginPage = () => {
           })
   
       }
-
-
-
-
-
-
-
-
-
-
+      
 
   return (
     <div className="min-h-screen bg-[#0d1520] flex items-center justify-center px-4 py-10">

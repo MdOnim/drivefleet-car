@@ -1,36 +1,175 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DriveFleet Car Rental Platform
 
-## Getting Started
+Live Site: https://drivefleet-car.vercel.app
 
-First, run the development server:
+## Project Overview
+
+DriveFleet is a full-stack car rental platform where users can explore available cars, view detailed information, book vehicles, manage bookings, and add their own car listings. The platform includes secure JWT authentication, protected private routes, booking management, and a fully responsive modern UI.
+
+---
+
+## Features
+
+* User authentication with Email/Password and Google Login
+* Secure JWT authentication using HTTPOnly cookies
+* Add, update, and delete car listings
+* Explore all available cars with search and filter functionality
+* Book cars and manage bookings from a private dashboard
+* Responsive design for mobile, tablet, and desktop devices
+* Dynamic car details page with booking modal
+* Booking count increment using MongoDB `$inc`
+* Protected private routes and APIs
+* Custom loading spinner and 404 page
+
+---
+
+## Technologies Used
+
+### Frontend
+
+* Next.js / React
+* Tailwind CSS
+* Hero UI
+* Framer Motion
+* React Hot Toast
+
+### Backend
+
+* Node.js
+* Express.js
+* MongoDB
+* JWT Authentication
+* Cookie Parser
+* CORS
+
+---
+
+## Pages Included
+
+### Public Pages
+
+* Home
+* Explore Cars
+* Car Details
+* Login
+* Register
+
+### Private Pages
+
+* Add Car
+* My Added Cars
+* My Bookings
+
+---
+
+## Authentication Features
+
+* Email & Password Login/Register
+* Google Authentication
+* JWT Token Generation
+* HTTPOnly Cookie Storage
+* Protected Routes
+* Persistent Login on Reload
+
+---
+
+## CRUD Functionalities
+
+### Add Car
+
+Users can add new car listings with:
+
+* Car Name
+* Daily Rent Price
+* Car Type
+* Image URL
+* Seat Capacity
+* Pickup Location
+* Description
+* Availability Status
+
+### Update Car
+
+Owners can update:
+
+* Price
+* Description
+* Availability
+* Image
+* Type
+* Location
+
+### Delete Car
+
+Owners can delete their car listings with confirmation.
+
+---
+
+## Booking System
+
+Users can:
+
+* Book available cars
+* Add special notes
+* Choose driver requirement
+* View all bookings
+* Track booking dates and total price
+
+---
+
+## Search & Filter
+
+* Search cars by car name using MongoDB `$regex`
+* Filter cars by category/type
+
+---
+
+## Deployment
+
+### Client
+
+Hosted on Vercel
+
+### Server
+
+Hosted on Render
+
+---
+
+## Installation & Setup
+
+### Clone the repositories
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Run Client
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Run Server
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```bash
+nodemon index.js
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Future Improvements
 
-To learn more about Next.js, take a look at the following resources:
+* Payment Integration
+* Wishlist Feature
+* Admin Dashboard
+* Real-time Notifications
+* Advanced Booking Analytics
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Author
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Developed by Md Onim
